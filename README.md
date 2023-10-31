@@ -1,4 +1,4 @@
-# flask_api
+# flask_kv_api
 
 A tiny Flask REST API for key-value storage. **MongoDB branch**.
 
