@@ -1,24 +1,8 @@
 version: '3'
 services:
 
-  mongo:
-    image: mongo
-    restart: always
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=example
+  api:
+    build: flask_api_app/
     ports:
-      - 27017:27017
-    # to persist data
-    # volumes:
-    #   - ./data:/data/db
-
-  mongo-express:
-    image: mongo-express
-    restart: always
-    ports:
-      - 8081:8081
-    environment:
-      - ME_CONFIG_MONGODB_URL=mongodb://root:example@mongo:27017/
-    depends_on:
-      - mongo
+      - 8080:8080
+    command: gunicorn -b 0.0.0.0:8080 main:app

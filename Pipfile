@@ -4,11 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pymongo = {extras = ["srv"], version = "*"}
+flask = "*"
 flask-restx = "*"
-pytest = "*"
+gunicorn = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3"
+python_version = "3.11"
