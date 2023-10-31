@@ -1,7 +1,8 @@
 # flask_api
 
-A tiny Flask REST API for key-value storage with NO DB.
+A tiny Flask REST API for key-value storage. **No DB branch**.
 
+You can switch between branches to change key-value storage flavour.
 
 ## Quick start
 
