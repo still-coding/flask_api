@@ -4,9 +4,9 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app
-COPY main.py config.py requirements.txt ./
+COPY main.py config.py requirements.txt settings.env ./
 COPY templates/ ./templates/
-COPY stoprage_adapters/ ./stoprage_adapters/
+COPY storage_adapters/ ./storage_adapters/
 
 
 RUN pip install --no-cache-dir --upgrade -r requirements.txt

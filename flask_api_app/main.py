@@ -3,8 +3,8 @@ from flask_restx import Api, Resource, fields
 
 from storage_adapters.base import StorageAdapter
 from storage_adapters.dao import KeyValuePair
-from storage_adapters.dict_adapter import DictAdapter
-
+from storage_adapters.mongodb_adapter import MongoDBAdapter
+from config import settings
 
 app = Flask(__name__)
 api = Api(app, title="A tiny key-value storage Flask API")
@@ -19,7 +19,10 @@ kvp = api.model(
     },
 )
 
-adapter: StorageAdapter = DictAdapter().connect()
+adapter: StorageAdapter = MongoDBAdapter(
+    connection_string=settings.mongodb_url,
+    db_name=settings.mongodb_dbname,
+).connect()
 
 
 @app.route("/keys_page/", methods=["GET"])
@@ -71,6 +74,5 @@ class Key(Resource):
 if __name__ == "__main__":
     app.run(
         debug=True,
-        # host='0.0.0.0',
         port=8080,
     )

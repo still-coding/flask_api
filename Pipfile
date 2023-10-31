@@ -4,9 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pymongo = {extras = ["srv"], version = "*"}
+pymongo = "*"
 flask-restx = "*"
 pytest = "*"
+pydantic = "*"
+pydantic-settings = "*"
+gunicorn = "*"
 
 [dev-packages]
 

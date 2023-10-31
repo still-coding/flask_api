@@ -1,5 +1,6 @@
+from typing import List, Union
+
 from .base import StorageAdapter
-from typing import Union, List
 from .dao import KeyValuePair
 
 
