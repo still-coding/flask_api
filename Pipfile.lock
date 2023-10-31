@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "af7776cab47eb76e0f5ccf0fdeb9a557aa5d2fb57af078898b75391e4312deb6"
+            "sha256": "734fbc04314776490232108b09aa6f4027559b143684e8edd0dbea2412215e3e"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -340,6 +340,15 @@
             "markers": "python_version >= '3.7'",
             "version": "==2.0.3"
         },
+        "pymemcache": {
+            "hashes": [
+                "sha256:27bf9bd1bbc1e20f83633208620d56de50f14185055e49504f4f5e94e94aff94",
+                "sha256:f507bc20e0dc8d562f8df9d872107a278df049fa496805c1431b926f3ddd0eab"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.7'",
+            "version": "==4.0.0"
+        },
         "pymongo": {
             "extras": [
                 "srv"
@@ -485,6 +494,13 @@
             ],
             "markers": "python_version >= '3.8'",
             "version": "==1.0.0"
+        },
+        "python-memcached-stats": {
+            "hashes": [
+                "sha256:d9d3a60e025664edf4bfd4ccd521cf8db36a21204b7ef090619227772342e031"
+            ],
+            "index": "pypi",
+            "version": "==0.1"
         },
         "pytz": {
             "hashes": [

@@ -11,6 +11,8 @@ pydantic = "*"
 pydantic-settings = "*"
 gunicorn = "*"
 redis = "*"
+pymemcache = "*"
+python-memcached-stats = "*"
 
 [dev-packages]
 

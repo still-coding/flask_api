@@ -1,6 +1,6 @@
 from typing import List, Union
 
-import redis
+from redis import Redis
 
 from .base import StorageAdapter
 from .dao import KeyValuePair
@@ -12,7 +12,7 @@ class RedisAdapter(StorageAdapter):
 
     # TODO: Add auth support
     def connect(self):
-        self.storage = redis.Redis(
+        self.storage = Redis(
             host=self.host, port=self.port, decode_responses=True
         )
         return self

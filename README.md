@@ -1,6 +1,6 @@
-# flask_api
+# flask_kv_api
 
-A tiny Flask REST API for key-value storage. **Redis branch**.
+A tiny Flask REST API for key-value storage. **Memcached branch**.
 
 You can switch between branches to change key-value storage flavour.
 

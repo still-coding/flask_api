@@ -8,6 +8,8 @@ class Settings(BaseSettings):
     mongodb_dbname: str
     redis_host: str
     redis_port: int
+    memcached_host: str
+    memcached_port: int
 
 
 settings = Settings()

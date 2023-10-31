@@ -1,14 +1,11 @@
 version: '3'
 
 services:
-  redis:
-    image: redis
+  memcached:
+    image: memcached
     restart: always
     ports:
-      - 6379:6379
-    # to persist data
-    volumes:
-      - ./data:/data
+      - 11211:11211
 
   api:
     build: flask_api_app/
@@ -16,4 +13,4 @@ services:
       - 8080:8080
     command: gunicorn -b 0.0.0.0:8080 main:app
     depends_on:
-      - redis
+      - memcached

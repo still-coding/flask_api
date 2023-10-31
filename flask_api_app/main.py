@@ -3,7 +3,7 @@ from flask_restx import Api, Resource, fields
 
 from storage_adapters.base import StorageAdapter
 from storage_adapters.dao import KeyValuePair
-from storage_adapters.redis_adapter import RedisAdapter
+from storage_adapters.memcached_adapter import MemcachedAdapter
 from config import settings
 
 app = Flask(__name__)
@@ -19,9 +19,9 @@ kvp = api.model(
     },
 )
 
-adapter: StorageAdapter = RedisAdapter(
-    host=settings.redis_host,
-    port=settings.redis_port,
+adapter: StorageAdapter = MemcachedAdapter(
+    host=settings.memcached_host,
+    port=settings.memcached_port,
 ).connect()
 
 
