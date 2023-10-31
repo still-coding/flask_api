@@ -10,6 +10,7 @@ pytest = "*"
 pydantic = "*"
 pydantic-settings = "*"
 gunicorn = "*"
+redis = "*"
 
 [dev-packages]
 

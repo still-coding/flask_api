@@ -57,7 +57,8 @@ def test_can_get_all_4_keys(client, create_3_keys):
     response = client.get("/keys/")
     assert response.status_code == 200
     assert len(response.json) == 4
-    assert response.json == expected
+    for kvp in expected:
+        assert kvp in response.json
 
 
 @pytest.mark.json_endpoints

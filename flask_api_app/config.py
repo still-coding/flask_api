@@ -6,6 +6,8 @@ class Settings(BaseSettings):
 
     mongodb_url: str
     mongodb_dbname: str
+    redis_host: str
+    redis_port: int
 
 
 settings = Settings()

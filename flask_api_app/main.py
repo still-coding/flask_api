@@ -3,7 +3,7 @@ from flask_restx import Api, Resource, fields
 
 from storage_adapters.base import StorageAdapter
 from storage_adapters.dao import KeyValuePair
-from storage_adapters.mongodb_adapter import MongoDBAdapter
+from storage_adapters.redis_adapter import RedisAdapter
 from config import settings
 
 app = Flask(__name__)
@@ -19,9 +19,9 @@ kvp = api.model(
     },
 )
 
-adapter: StorageAdapter = MongoDBAdapter(
-    connection_string=settings.mongodb_url,
-    db_name=settings.mongodb_dbname,
+adapter: StorageAdapter = RedisAdapter(
+    host=settings.redis_host,
+    port=settings.redis_port,
 ).connect()
 
 
