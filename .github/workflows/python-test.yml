@@ -12,9 +12,6 @@ permissions:
 jobs:
   runner-job:
     runs-on: ubuntu-latest
-    env:
-      REDIS_HOST: redis
-      REDIS_PORT: 6379
     services:
       redis:
         image: redis
@@ -44,6 +41,9 @@ jobs:
         ruff --output-format=github .
       continue-on-error: true
     - name: Test with pytest
+      env:
+        REDIS_HOST: localhost
+        REDIS_PORT: 6379
       run: |
         pip install pytest
         pytest ./flask_api_app
