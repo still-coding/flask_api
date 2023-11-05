@@ -12,6 +12,21 @@ permissions:
 jobs:
   runner-job:
     runs-on: ubuntu-latest
+    services:
+      mongodb:
+        image: mongo
+        env:
+          MONGO_INITDB_ROOT_USERNAME: root
+          MONGO_INITDB_ROOT_PASSWORD: example
+          MONGO_INITDB_DATABASE: test_db
+        options: >-
+          --health-cmd mongo
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 27017:27017
+    
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python 3.10
@@ -28,17 +43,10 @@ jobs:
         pip install ruff
         ruff --output-format=github .
       continue-on-error: true
-    - name: Start MongoDB
-      uses: supercharge/mongodb-github-action@1.10.0
-      with:
-        mongodb-version: '6.0'
-        mongodb-username: root
-        mongodb-password: example
-        mongodb-db: test_db
     - name: Test with pytest
       env:
-        MONGODB_DBNAME: test_db
         MONGODB_URL: mongodb://root:example@$localhost:27017/
+        MONGODB_DBNAME: test_db
       run: |
         pip install pytest
         pytest ./flask_api_app
