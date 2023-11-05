@@ -1,5 +1,7 @@
 # flask_kv_api
 
+![Tests status](https://github.com/still-coding/flask_kv_api/actions/workflows/python-test.yml/badge.svg?branch=memcached)
+
 A tiny Flask REST API for key-value storage. **Memcached branch**.
 
 You can switch between branches to change key-value storage flavour.
