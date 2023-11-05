@@ -15,10 +15,9 @@ jobs:
     services:
       mongodb:
         image: mongo
-        env:
-          MONGO_INITDB_ROOT_USERNAME: root
-          MONGO_INITDB_ROOT_PASSWORD: example
         options: >-
+          -e MONGO_INITDB_ROOT_USERNAME=root
+	        -e MONGO_INITDB_ROOT_PASSWORD=example
           --health-cmd "echo 'db.runCommand("ping").ok' | mongosh --quiet"
           --health-interval 10s
           --health-timeout 5s
