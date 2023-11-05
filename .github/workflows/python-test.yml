@@ -1,0 +1,54 @@
+name: Python test
+
+on:
+  push:
+    branches: [ "memcached" ]
+  pull_request:
+    branches: [ "memcached" ]
+
+permissions:
+  contents: read
+
+jobs:
+  runner-job:
+    runs-on: ubuntu-latest
+    services:
+      memcached:
+        image: memcached
+        options: >-
+          --health-cmd "/bin/nc -z 127.0.0.1 11211"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 11211:11211
+      memcached_hc_install:
+        image: mongo:4.2.8
+        depends_on:
+          - memcached
+        restart: "no"
+        entrypoint: [ "bash", "-c", "sleep 3 && apt-get update && apt-get install -y netcat && apt-get clean"]
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.10"
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r ./flask_api_app/requirements.txt
+    - name: Lint with Ruff
+      run: |
+        pip install ruff
+        ruff --output-format=github .
+      continue-on-error: true
+    - name: Test with pytest
+      env:
+        MEMCACHED_HOST: localhost
+        MEMCACHED_PORT: 11211
+      run: |
+        pip install pytest
+        pytest ./flask_api_app
