@@ -5,7 +5,8 @@ name = "pypi"
 
 [packages]
 pymongo = "*"
-flask-restx = "*"
+flask = "2.3.3"
+flask-restx = "1.2.0"
 pytest = "*"
 pydantic = "*"
 pydantic-settings = "*"
