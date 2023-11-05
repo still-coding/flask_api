@@ -14,21 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     services:
       memcached:
-        image: memcached
-        options: >-
-          --health-cmd "/bin/nc -z 127.0.0.1 11211"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+        build: .
         ports:
           - 11211:11211
-      memcached_hc_install:
-        image: mongo:4.2.8
-        depends_on:
-          - memcached
-        restart: "no"
-        entrypoint: [ "bash", "-c", "sleep 3 && apt-get update && apt-get install -y netcat && apt-get clean"]
-
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python 3.10
