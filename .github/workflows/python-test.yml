@@ -33,4 +33,4 @@ jobs:
     - name: Test with pytest
       run: |
         pip install pytest
-        python -m pytest
+        pytest ./flask_api_app
